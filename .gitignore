@@ -1,0 +1,19 @@
+# Environment files
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+
+# Database
+*.sqlite
+
+# VS Code
+.vscode/
