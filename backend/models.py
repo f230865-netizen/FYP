@@ -10,6 +10,9 @@ class User(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     email = Column(String, unique=True, nullable=False)
     password_hash = Column(String, nullable=False)
+    first_name = Column(String, nullable=True)
+    last_name = Column(String, nullable=True)
+    role = Column(String, nullable=True)
     created_at = Column(DateTime, default=func.now())
     is_new_user = Column(Boolean, default=True)
 
