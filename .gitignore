@@ -17,3 +17,6 @@ dist/
 
 # VS Code
 .vscode/
+# Uploaded datasets (never commit user data)
+uploads/
+backend/uploads/
