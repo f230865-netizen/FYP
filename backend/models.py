@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Boolean, Float, DateTime, ForeignKey
+from sqlalchemy import Column, String, Boolean, Float, DateTime, ForeignKey, Integer
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 from database import Base
@@ -39,3 +39,42 @@ class UserPreferences(Base):
     pdf_language = Column(String, default="simple")
     blur_threshold = Column(Float, default=100.0)
     updated_at = Column(DateTime, default=func.now())
+    
+class DatasetSession(Base):
+    __tablename__ = "dataset_sessions"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
+
+    filename = Column(String, nullable=False)
+    modality = Column(String, nullable=False)
+    file_size_mb = Column(Float, nullable=True)
+    file_path = Column(String, nullable=True)
+
+    status = Column(String, default="uploaded")
+    dqi_before = Column(Float, nullable=True)
+    dqi_after = Column(Float, nullable=True)
+    ai_suggestions = Column(Integer, default=0)
+
+    created_at = Column(DateTime, default=func.now())
+
+
+class AuditLog(Base):
+    __tablename__ = "audit_logs"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
+    session_id = Column(UUID(as_uuid=True), nullable=False)
+
+    timestamp = Column(DateTime, default=func.now())
+
+    column_name = Column(String, nullable=True)
+    issue_detected = Column(String, nullable=True)
+    technique_used = Column(String, nullable=True)
+
+    ai_suggested = Column(Boolean, default=False)
+    user_override = Column(Boolean, default=False)
+
+    rows_affected = Column(Integer, nullable=True)
+    dqi_before = Column(Float, nullable=True)
+    dqi_after = Column(Float, nullable=True)

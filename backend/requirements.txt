@@ -1,0 +1,26 @@
+fastapi
+uvicorn
+python-multipart
+pydantic
+email-validator
+sqlalchemy
+alembic
+psycopg2-binary
+bcrypt
+PyJWT
+python-dotenv
+aiofiles
+pandas
+numpy
+scikit-learn
+chardet
+rapidfuzz
+Pillow
+opencv-python
+imagehash
+cleanvision
+reportlab
+matplotlib
+anthropic
+python-magic; sys_platform != "win32"
+python-magic-bin; sys_platform == "win32"
