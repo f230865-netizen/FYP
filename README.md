@@ -38,3 +38,5 @@ HTML design screens are in frontend/prototype/ (open DrData_Landing.html).
 - backend/services  business logic
 - frontend/src      React app
 - docs/             project documentation
+
+- Final Year Project of BS CS
